@@ -26,10 +26,11 @@ in {
       organelles
     );
   in
-    if type != "directory"
+    if false
     then
       abort ''
-
+      
+        type: ${type}
 
         Everything under ''${cellsFrom}/* is considered a Cell
 
