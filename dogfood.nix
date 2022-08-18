@@ -20,4 +20,5 @@ growOn {
 } {
   devShells = harvest inputs.self ["automation" "devshells"];
   packages = harvest inputs.self [["std" "cli"] ["std" "packages"]];
+  lib = (harvest inputs.self ["automation" "lib"]).x86_64-linux;
 }
