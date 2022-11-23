@@ -345,11 +345,14 @@
     res = accumulate (l.map loadOutputFor Systems);
   in
     res.output
-    // {
-      __std.ci = l.listToAttrs res.ci;
+    // (let
+      ci = l.listToAttrs res.ci;
+    in {
+      __std = {inherit ci;};
+      __std.__evalCi = import ./eval-ci.nix inputs.self ci;
       __std.init = l.listToAttrs res.init;
       __std.actions = res.actions;
       __std.direnv_lib = ../direnv_lib.sh;
-    };
+    });
 in
   grow
